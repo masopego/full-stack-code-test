@@ -5,6 +5,8 @@ const port = 3000;
 const booksRouter = require("./routes/books");
 const authorsRouter = require("./routes/authors");
 
+app.use(express.json());
+
 app.use(booksRouter);
 app.use(authorsRouter);
 
