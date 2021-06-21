@@ -3,22 +3,37 @@ const db = require("../models");
 const Authors = db.models.authors;
 
 const AuthorsController = {
-  getAuthors: async (req, res, next) => {
+  getAuthors: async (req, res) => {
     try {
       const authors = await Authors.findAll();
       res.send(authors);
     } catch {
       res.status(500).send({
-        message: err.message || "Some error occurred while getting books.",
+        message: err.message || "Some error occurred while getting Authors.",
       });
     }
   },
 
-  getAuthor: (req, res, next) => {
-    res.status(200).send("OK");
+  getAuthor: async (req, res) => {
+    const id = req.params.id;
+    try {
+      const author = await Authors.findByPk(id);
+
+      if (!author) {
+        res.status(404).send({
+          message: "author not found",
+        });
+      }
+      res.send(author);
+    } catch {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Author.",
+      });
+    }
   },
 
-  createAuthor: async (req, res, next) => {
+  createAuthor: async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
@@ -34,18 +49,42 @@ const AuthorsController = {
       res.send(author);
     } catch {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the Book.",
+        message:
+          err.message || "Some error occurred while creating the Author.",
       });
     }
   },
 
-  updateAuthor: (req, res, next) => {
+  updateAuthor: async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    res.status(200).send("OK");
+    const id = req.params.id;
+    const Author = {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+    };
+
+    try {
+      let author = await Authors.findByPk(id);
+
+      if (!author) {
+        res.status(404).send({
+          message: "author not found",
+        });
+        return;
+      }
+
+      author = await Authors.update(Author, { where: { id: id } });
+      res.send({ id, ...Author });
+    } catch {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while updating the Author.",
+      });
+    }
   },
 };
 
