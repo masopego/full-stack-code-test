@@ -13,7 +13,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/" component={CreateBook} />
-          <Route path="bookmarks" component={ListBooks} />
+          <Route path="/bookmarks" component={ListBooks} />
         </Switch>
       </main>
       <Footer />

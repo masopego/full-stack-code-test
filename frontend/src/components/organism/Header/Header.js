@@ -14,7 +14,7 @@ function Header() {
             <Link to="/">Create new book.</Link>
           </li>
           <li>
-            <Link to="/list-products">Your Bookmarks.</Link>
+            <Link to="/bookmarks">Your Bookmarks.</Link>
           </li>
         </ul>
       </nav>
