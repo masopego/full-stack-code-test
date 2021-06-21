@@ -1,4 +1,6 @@
-module.exports = (sequelize, Sequelize) => {
+const { Sequelize } = require("sequelize");
+
+module.exports = (sequelize) => {
   const Author = sequelize.define("author", {
     id: {
       field: "id",
