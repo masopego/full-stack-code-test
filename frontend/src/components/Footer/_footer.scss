@@ -1,0 +1,51 @@
+@import "../../stylesheets/core/_variables.scss";
+@import "../../stylesheets/core/_mixins.scss";
+
+.footer {
+  width: 100%;
+  padding: 30px;
+  position: relative;
+  background-color: $color-primary;
+
+  @include tablet {
+    padding: 30px 45px;
+  }
+
+  @include display {
+    padding: 30px 60px;
+  }
+
+  &:before {
+    height: 3px;
+    background: $color-secondary;
+    width: 100%;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: 30px;
+  }
+
+  & .wrapper {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  &__copy {
+    & h5 {
+      font-size: $font-regular;
+      color: black;
+      font-family: $font-primary;
+      transition: color 0.5s linear;
+      text-align: center;
+
+      @include tablet {
+        text-align: right;
+      }
+
+      &:hover {
+        color: $color-dark;
+      }
+    }
+  }
+}
