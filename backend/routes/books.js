@@ -4,7 +4,7 @@ const booksController = require("../controllers/books");
 const expressValidator = require("express-validator");
 
 const bookValidator = [
-  expressValidator.check("name").isAlpha(),
+  expressValidator.check("name").isString(),
   expressValidator.check("isbn").isISBN(),
   expressValidator.check("author").isInt(),
 ];
