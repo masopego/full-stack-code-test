@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import BookService from "../../services/book.service";
+import { Link } from "react-router-dom";
+import BookService from "../../../services/book.service";
+import "./_listBooks.scss";
 
 function ListBooks() {
   const [books, setBooks] = useState([]);
@@ -13,15 +15,17 @@ function ListBooks() {
 
   const renderBooks = () => {
     return books.map((book, index) => (
-      <li key={index}>
-        <p>{book.name}</p>
-      </li>
+      <Link to={`/bookmarks/${book.id}`}>
+        <li key={index}>
+          <p>{book.name}</p>
+        </li>
+      </Link>
     ));
   };
 
   return (
-    <div>
-      <div>
+    <div className="list_book_page">
+      <div className="wrapper">
         <ul>{renderBooks()}</ul>
       </div>
     </div>

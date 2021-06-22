@@ -1,5 +1,8 @@
 @import "./_variables.scss";
 
+body {
+  min-height: 100vh;
+}
 main {
   background: $color-primary;
   width: 100%;
