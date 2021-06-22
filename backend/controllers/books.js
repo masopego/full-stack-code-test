@@ -18,7 +18,7 @@ const BooksController = {
   getBook: async (req, res) => {
     const id = req.params.id;
     try {
-      const book = await Books.findByPk(id);
+      const book = await Books.findByPk(id, { include: "author" });
 
       if (!book) {
         res.status(404).send({

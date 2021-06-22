@@ -1,0 +1,27 @@
+@import "../../../stylesheets/core/variables";
+
+.book_details_page {
+  height: 100%;
+  .wrapper {
+    background: $color-secondary;
+    margin: 0 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card_book {
+      padding: 275px 0;
+      color: black;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 3px;
+      line-height: 25px;
+
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
+}
